@@ -14,6 +14,7 @@ addons:
       - openjdk-7-jdk
 
 before_script:
+  - npm i npm@latest -g
   - npm install -g ionic cordova
   - wget http://dl.google.com/android/android-sdk_r24.4-linux.tgz
   - tar -xvf android-sdk_r24.4-linux.tgz
