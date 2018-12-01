@@ -6,13 +6,6 @@ branches:
  only:
   - master
 
-#addons:
-  #apt:
-    #sources:
-      #- ubuntu-toolchain-r-test
-    #packages:
-      #- openjdk-7-jdk
-
 before_script:
   - npm i npm@latest -g
   - npm install -g ionic cordova
@@ -27,15 +20,8 @@ before_script:
   - echo y | ./android-sdk-linux/tools/android update sdk --no-ui --all --filter extra-google-m2repository
   - export ANDROID_HOME=$PWD/android-sdk-linux
   - export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/26.0.2
+  - yarn install
 
 script:
-  - ionic cordova build android --prod
-
-#deploy:
-  #provider: pages
-  #skip-cleanup: true
-  #github-token: $GITHUB_TOKEN 
-  #keep-history: true
-  #on:
-    #branch: master
-  #local_dir: www
+  #- ionic cordova build android --prod
+  - ionic cordova build ios --prod
