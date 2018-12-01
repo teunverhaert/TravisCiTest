@@ -13,30 +13,20 @@ branches:
     #packages:
       #- openjdk-7-jdk
 
-android:
-  components:
-    - tools
-    - platform-tools
-    - tools
-
-    - build-tools-26.0.2
-    - android-26
-    - extra-google-m2repository
-    - extra-android-m2repository
-
 before_script:
   - npm i npm@latest -g
   - npm install -g ionic cordova
-  #- wget http://dl.google.com/android/android-sdk_r24.4-linux.tgz
-  #- tar -xvf android-sdk_r24.4-linux.tgz
-  #- echo y | ./android-sdk-linux/tools/android update sdk --no-ui --all --filter platform-tools
-  #- echo y | ./android-sdk-linux/tools/android update sdk --no-ui --all --filter build-tools-28.0.3
-  #- echo y | ./android-sdk-linux/tools/android update sdk --no-ui --all --filter android-28
-  #- echo y | ./android-sdk-linux/tools/android update sdk --no-ui --all --filter extra-android-support
-  #- echo y | ./android-sdk-linux/tools/android update sdk --no-ui --all --filter extra-android-m2repository
-  #- echo y | ./android-sdk-linux/tools/android update sdk --no-ui --all --filter extra-google-m2repository
-  #- export ANDROID_HOME=$PWD/android-sdk-linux
-  #- export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/28.0.3
+  - wget http://dl.google.com/android/android-sdk_r24.4-linux.tgz
+  - tar -xvf android-sdk_r24.4-linux.tgz
+  - echo y | ./android-sdk-linux/tools/android update sdk --no-ui --all --filter tools
+  - echo y | ./android-sdk-linux/tools/android update sdk --no-ui --all --filter platform-tools
+  - echo y | ./android-sdk-linux/tools/android update sdk --no-ui --all --filter build-tools-26.0.2
+  - echo y | ./android-sdk-linux/tools/android update sdk --no-ui --all --filter android-26
+  - echo y | ./android-sdk-linux/tools/android update sdk --no-ui --all --filter extra-android-support
+  - echo y | ./android-sdk-linux/tools/android update sdk --no-ui --all --filter extra-android-m2repository
+  - echo y | ./android-sdk-linux/tools/android update sdk --no-ui --all --filter extra-google-m2repository
+  - export ANDROID_HOME=$PWD/android-sdk-linux
+  - export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/26.0.2
 
 script:
   - ionic cordova build android --prod
